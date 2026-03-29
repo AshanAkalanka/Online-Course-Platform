@@ -1,0 +1,23 @@
+const express = require('express');
+const router = express.Router();
+const {
+    getAdminStats,
+    getAllUsers,
+    updateUserRole,
+    deleteUser,
+    getCategories,
+    createCategory,
+    deleteCategory
+} = require('../controllers/adminController');
+const authMiddleware = require('../middleware/authMiddleware');
+const roleMiddleware = require('../middleware/roleMiddleware');
+
+router.get('/stats', authMiddleware, roleMiddleware('admin'), getAdminStats);
+router.get('/users', authMiddleware, roleMiddleware('admin'), getAllUsers);
+router.put('/users/:id/role', authMiddleware, roleMiddleware('admin'), updateUserRole);
+router.delete('/users/:id', authMiddleware, roleMiddleware('admin'), deleteUser);
+router.get('/categories', authMiddleware, roleMiddleware('admin'), getCategories);
+router.post('/categories', authMiddleware, roleMiddleware('admin'), createCategory);
+router.delete('/categories/:name', authMiddleware, roleMiddleware('admin'), deleteCategory);
+
+module.exports = router;
