@@ -63,6 +63,7 @@ Built using **React, Node.js, Express, and MySQL**, EduFlow provides a smooth le
 * express-rate-limit
 
 📁 Project Structure
+```bash
 
 course-platform/
 │
